@@ -14,8 +14,6 @@ public class LoginGUI extends JFrame {
 
     public LoginGUI() {
         perpustakaan = new Perpustakaan();
-
-        // Contoh data
         perpustakaan.tambahAdmin(new Admin("admin", "admin"));
         perpustakaan.tambahMahasiswa(new Mahasiswa("student", "student", "Nama", "123456", "Prodi", "Jurusan"));
 
@@ -27,12 +25,7 @@ public class LoginGUI extends JFrame {
 
         // Panel Utama
         JPanel panel = new JPanel();
-        panel.setLayout(null); // Menggunakan layout null
-
-        // Gambar Ikon
-        JLabel iconLabel = new JLabel(new ImageIcon("C:\\Users\\Rifki\\Documents\\Intellij Java\\Perpus\\src\\main\\java\\com\\example\\image\\library_icon.png"));
-        iconLabel.setBounds(200, 10, 100, 100);
-        panel.add(iconLabel);
+        panel.setLayout(null); // Menggunakan layout nul
 
         // Username Label dan Field
         JLabel userLabel = new JLabel("Username:");

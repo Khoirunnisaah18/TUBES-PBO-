@@ -8,16 +8,16 @@ public class Mahasiswa {
     private String password;
     private String nama;
     private String nim;
-    private String prodi;
+    private String fakultas;
     private String jurusan;
     private List<Buku> bukuDipinjam;
 
-    public Mahasiswa(String username, String password, String nama, String nim, String prodi, String jurusan) {
+    public Mahasiswa(String username, String password, String nama, String nim, String fakultas, String jurusan) {
         this.username = username;
         this.password = password;
         this.nama = nama;
         this.nim = nim;
-        this.prodi = prodi;
+        this.fakultas = fakultas;
         this.jurusan = jurusan;
         this.bukuDipinjam = new ArrayList<>();
     }
@@ -39,7 +39,7 @@ public class Mahasiswa {
     }
 
     public String getProdi() {
-        return prodi;
+        return fakultas;
     }
 
     public String getJurusan() {

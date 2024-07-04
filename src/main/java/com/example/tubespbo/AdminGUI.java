@@ -1,5 +1,10 @@
 package com.example.tubespbo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -90,6 +95,14 @@ public class AdminGUI extends JFrame {
 
     private void lihatDaftarMahasiswa() {
         StringBuilder sb = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader("mahasiswa_data.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
         for (Mahasiswa mahasiswa : perpustakaan.getMahasiswas()) {
             sb.append("Nama: ").append(mahasiswa.getNama())
                     .append(", NIM: ").append(mahasiswa.getNim())
@@ -131,9 +144,27 @@ public class AdminGUI extends JFrame {
             String prodi = prodiField.getText();
             String jurusan = jurusanField.getText();
 
+            if (username.isEmpty() || password.isEmpty() || nama.isEmpty() || nim.isEmpty() || prodi.isEmpty() || jurusan.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill in all fields!");
+                return;
+            }
+
             Mahasiswa mahasiswa = new Mahasiswa(username, password, nama, nim, prodi, jurusan);
             perpustakaan.tambahMahasiswa(mahasiswa);
-            JOptionPane.showMessageDialog(null, "Mahasiswa berhasil ditambahkan!");
+            try (FileWriter fileWriter = new FileWriter("mahasiswa_data.txt", true);
+                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+                bufferedWriter.write("Username: " + username + "\n");
+                bufferedWriter.write("Password: " + password + "\n");
+                bufferedWriter.write("Nama: " + nama + "\n");
+                bufferedWriter.write("NIM: " + nim + "\n");
+                bufferedWriter.write("Fakultas: " + prodi + "\n");
+                bufferedWriter.write("Jurusan: " + jurusan + "\n");
+                bufferedWriter.write("-------------------------------\n");
+            } catch (IOException e) {
+                System.err.println("Error writing to file: " + e.getMessage());
+            }
+
+        JOptionPane.showMessageDialog(null, "Mahasiswa berhasil ditambahkan!");
         }
     }
 

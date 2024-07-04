@@ -1,0 +1,21 @@
+Username: admin
+Password: admin
+Nama: khoirunnisa
+NIM: 202310370311082
+Fakultas: teknik
+Jurusan: informatika
+-------------------------------
+Username: admin
+Password: admin
+Nama: reihandany
+NIM: 20231037031108
+Fakultas: teknik
+Jurusan: informatika
+-------------------------------
+Username: mahasiswa
+Password: mahasiswa
+Nama: aliya
+NIM: 202310370311089
+Fakultas: teknik
+Jurusan: informatika
+-------------------------------
